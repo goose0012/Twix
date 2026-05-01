@@ -8,6 +8,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import TweetCard from "./components/tweet-card";
+import QRCode from "./components/qr-code";
 
 const tweets = [
   {
@@ -71,6 +72,7 @@ return (
 {tweets.map((tweet, index) => (
   TweetCard({ tweet, index })
 ))}
+<QRCode />
       </VStack>
     </Container>
   </Box>
