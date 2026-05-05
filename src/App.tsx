@@ -9,14 +9,27 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import {useState} from "react";
-import tweetsData from "./data/tweets.json";
+import React, { useEffect, useState } from "react";
+import { supabase } from "./utils/supabase";
 import type {Tweet} from "./types/Tweet";
 
 function App() {
-  const [tweets, setTweets] = useState<Tweet[]>(tweetsData as Tweet[]);
+  const [tweets, setTweets] = useState<Tweet[]>([]);
   // input is what is currently typed in the box
   const [input, setInput] = useState("");
+  useEffect(() => {
+  async function load() {
+    const { data, error } = await supabase
+      .from("tweets")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) console.error(error);
+    else setTweets(data || []);
+  }
+
+  load();
+}, []);
 // what happens when user clicks Yap button
   const handleYap = () => {
     // if input is empty, stop.
