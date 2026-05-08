@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import FeedPage from "./pages/FeedPage";
 import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/About";
 
 function Layout() {
   return (
@@ -24,6 +25,9 @@ function Layout() {
               </Link>
               <Link asChild color="gray.200">
                 <RouterLink to="/feed">Feed</RouterLink>
+              </Link>
+              <Link asChild color="gray.200">
+                <RouterLink to="/about">About</RouterLink>
               </Link>
             </HStack>
           </HStack>
@@ -42,6 +46,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/feed" element={<FeedPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/about" element={<AboutPage />} />
       </Route>
     </Routes>
   );
