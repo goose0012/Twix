@@ -9,11 +9,32 @@ import {
 import FeedPage from "./pages/FeedPage";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/About";
+import Particles from "./component/Particles";
 
 function Layout() {
   return (
-    <Box bg="gray.900" minH="100vh" py={8}>
-      <Container maxW="650px">
+    <Box
+      bg="gray.900"
+      minH="100vh"
+      py={8}
+      position="relative"
+      overflow="hidden"
+    >
+      <Box position="fixed" inset={0} zIndex={0} pointerEvents="none">
+        <Particles
+          particleColors={["#ffffff"]}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover
+          alphaParticles={false}
+          disableRotation={false}
+          pixelRatio={1}
+        />
+      </Box>
+
+      <Container maxW="650px" position="relative" zIndex={1}>
         <VStack gap={5} align="stretch">
           <HStack justify="space-between">
             <Text fontWeight="bold" color="white">
